@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Network Penetration Testing Tool</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function logoutFunction() {
+            document.cookie = "session_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = "./";
+        }
+    </script>
+    <script>
+        function printFunction() {
+            window.print();
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Bootstrap 5 Navbars -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home">Network Penetration Testing Tool</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Scanner</a>
+                    </li>                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="summary">Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="whitelist">Whitelist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="help">Help</a>
+                    </li>
+                </ul>
+                <!-- ============================= -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logoutFunction()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Start -->
+    <div class="container mt-5">
+        <h1>4. Script Result</h1>
+        <div class="container p-5 my-5 border">
+            <div class="container-progress">
+                <div class="progress">
+                    <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                        style=width:100%>Scanning in progress...</div>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <div class="show-ip-address"></div>
+                <button type="button" name="back-to-services-version-result" onclick="location.href='/services_version_result'" class="btn btn-secondary" data-bs-dismiss="modal" style="float: left;">Back to services version result</button>
+                <br>
+                <br>
+                <div class="col">
+                    <table id="script-result" class="table table-hover table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="col">ScanID</th>
+                                <th scope="col">Script</th>
+                                <th scope="col">Script output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" name="back-to-services-version-result" onclick="location.href='/services_version_result'" class="btn btn-secondary" data-bs-dismiss="modal" style="float: left;">Back to services version result</button>
+                <br>
+                <br>
+
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>    
+    $(document).ready(function () {
+        // Call the updateTable function every 2 seconds
+        setInterval(fetchData, 2000);
+    });
+    function fetchData() {
+        $.ajax({
+            url: './get_script_data',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {                
+                let tableBody = $('#script-result tbody');
+                tableBody.empty(); // Clear existing table rows
+
+                data["data"].forEach(function (item) {
+                    var show_ip_address = document.querySelector('.show-ip-address');
+                    $(".show-ip-address").each(function() {
+                        $(this).empty();
+                    });
+                    show_ip_address.innerHTML = `<h2>Host: ${item['host_ipv4']} | Port: ${item['port']}</h2>`;
+
+                    let row = `<tr>
+                                <td>${item['scan_id']}</td>
+                                <td>${item['script_name']}</td>
+                                <td>${item['script_output']}</td></tr>`;
+
+                    tableBody.append(row);
+
+                    if (item['host_ipv4']) {
+                        $('#progress-bar').css('width', '100%'); // set progress to 100%
+                        $('#progress-bar').removeClass('progress-bar-animated progress-bar-striped'); // remove the animation and stripes classes
+                        $('#progress-bar').addClass('bg-success'); // add the success class to change the color
+                        $('#progress-bar').html(`Scanning completed!`);
+                    }
+                })
+            }
+        })
+    }
+</script>

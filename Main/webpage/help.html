@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Network Penetration Testing Tool</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function logoutFunction() {
+            document.cookie = "session_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = "./";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Bootstrap 5 Navbars -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home">Network Penetration Testing Tool</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scanner">Scanner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="summary">Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="whitelist">Whitelist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Help</a>
+                    </li>
+                </ul>
+                <!-- ============================= -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logoutFunction()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Start -->
+    <div class="container mt-5">
+        <h1>Help</h1>
+        <div class="container p-5 my-5 border">
+            <div class="container">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                What is Network Penetration Testing Tool?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Network Penetration Testing Tool</strong> is a website project designed to help
+                                Small and Medium Enterprise (SME) administrators test the security of their network
+                                devices. Users can input an IP range or specific IP address to scan network devices and
+                                identify open ports. The tool uses nmap for scanning and service version detection, as
+                                well as script scanning for various services such as MySQL, SMB, SSH, and HTTP.
+                                <br>
+                                <br>
+                                In addition to scanning, users can set up a whitelist to identify devices that are not
+                                on the list and view a summary of the scan results. The summary provides valuable
+                                information such as the total number of open ports found, the most common open ports,
+                                the percentage of ports used for web traffic, the least common open port, the percentage
+                                of whitelisted devices, and the number of non-whitelisted devices that may pose a
+                                security risk. This tool aims to assist SME administrators in identifying potential
+                                vulnerabilities and improving their network security.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                How to start to scan the network?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>To start scanning the network, follow these steps:</strong>
+                                <br>
+                                <br>
+                                1. On the "Network Penetration Testing Tool" website click the "<strong>Scanner</strong>" tab, input the
+                                IP address or IP range you want to scan (e.g., 192.168.10.0/24 or 192.168.10.1-5) in the
+                                provided field.
+                                <br>
+                                2. Click the "<strong>Scan</strong>" button and wait for the scanning results to be displayed. The
+                                results will show which devices are not on the whitelist.
+                                <br>
+                                3. If you want to scan the device services version, click "<strong>More</strong>" and then click "<strong>Scan
+                                services version</strong>". Wait for the scanning services results to be displayed, which will
+                                show the services information.
+                                <br>
+                                4. If you want to use script scanning, select the desired script from the list and click
+                                the script to run.
+                                <br>
+                                5. Review the script results to analyze the network's security and identify any
+                                potential vulnerabilities.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                What is the whitelist?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                A whitelist is a list of approved devices that are allowed to access a network or
+                                system. In the context of the "Network Penetration Testing Tool" website, the whitelist
+                                is used to identify devices that are authorized to be on the network. Devices not on the
+                                whitelist may indicate a security risk, as they could be unauthorized or potentially
+                                malicious.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+                                How to add the device to whitelist?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>There are two methods to add a device to the whitelist:</strong>
+                                <br>
+                                <br>
+                                <strong>Type 1: Add the device manually through the website input box.</strong>
+                                <br>
+                                1. Go to the whitelist page and locate the "<strong>Add MAC Address to whitelist</strong>" section on the
+                                left-hand side.
+                                <br>
+                                2. Enter the device's MAC address and an optional remark.
+                                <br>
+                                3. Click the "<strong>Add to whitelist</strong>" button to add the device to the whitelist.
+                                <br>
+                                <br>
+                                <strong>Type 2: Upload a CSV file with the device information.</strong>
+                                <br>
+                                1. Go to the whitelist page and locate the "<strong>Upload a csv file to whitelist (.csv)</strong>"
+                                section on the right-hand side.
+                                <br>
+                                2. Download the whitelist template to ensure your CSV file has the correct format.
+                                <br>
+                                3. Select your CSV file and click the "<strong>Upload the file</strong>" button to add the devices listed
+                                in the file to the whitelist.
+                                <br>
+                                <br>
+                                In the whitelist table, you can remove individual devices from the whitelist or remove
+                                all devices by clicking the "<strong>Remove</strong>" or "<strong>Remove All Whitelist</strong>" buttons, respectively.
+                                You can also download the entire whitelist by clicking the "<strong>Download All Whitelist</strong>"
+                                button.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapseThree">
+                                What is summary page?
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                The summary page is a section of the "Network Penetration Testing Tool" website that provides an overview of the scanning results. It displays important information such as the total number of open ports found in the scanned network, the most common open ports, the percentage of open ports used for web traffic, the least common open port, the percentage of whitelisted devices, and the number of devices not in the whitelist that may pose a security risk. The summary page helps SME administrators to quickly assess the security of their network and take necessary actions, such as adding devices to the whitelist.          
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapseThree">
+                                Supports private IPv4 addresses
+                            </button>
+                        </h2>
+                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Supports private IPv4 addresses in the following formats:</strong>
+                                <br>
+                                <br>
+                                - 10.0.0.0/8 IP addresses: 10.0.0.0 – 10.255.255.255
+                                <br>
+                                - 172.16.0.0/12 IP addresses: 172.16.0.0 – 172.31.255.255
+                                <br>
+                                - 192.168.0.0/16 IP addresses: 192.168.0.0 – 192.168.255.255
+                                <br>
+                                <br>
+                                It also supports optional CIDR or hyphen notation at the end of the IP address string (e.g., /24 or -16).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
