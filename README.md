@@ -1,4 +1,10 @@
 # Network-Penetration-Testing-Tool
+
+## Important
+This tool is for school project. Not additional support.
+This tool is for school project. Not additional support.
+This tool is for school project. Not additional support.
+
 ## What is Network Penetration Testing Tool?
 Network Penetration Testing Tool is a website project designed to help Small and Medium Enterprise (SME) administrators test the security of their network devices. Users can input an IP range or specific IP address to scan network devices and identify open ports. The tool uses nmap for scanning and service version detection, as well as script scanning for various services such as MySQL, SMB, SSH, and HTTP.
 
