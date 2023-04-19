@@ -1,8 +1,6 @@
 # Network-Penetration-Testing-Tool
 
-## Important
-This tool is for school project. Not additional support.
-This tool is for school project. Not additional support.
+# Important
 This tool is for school project. Not additional support.
 
 ## What is Network Penetration Testing Tool?
